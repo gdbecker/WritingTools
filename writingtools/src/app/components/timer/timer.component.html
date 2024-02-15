@@ -1,0 +1,77 @@
+<div *ngIf="!ready" class="card">
+  <div class="card-header form-header">
+    Pomodoro Timer Setup
+  </div>
+  <div class="card-body">
+    <form #timerForm="ngForm" (ngSubmit)="onSubmit(timerForm)">
+      <div class="form-group">
+        <label for="name">Work Minutes</label>
+        <input 
+          type="number"
+          class="form-control"
+          name="workmin"
+          #workmin="ngModel"
+          [ngClass]="{ 'is-invalid':workmin.errors && workmin.touched }"
+          [(ngModel)]="workMin"
+          required
+        >
+        <div [hidden]="!workmin.errors?.['required']" class="invalid-feedback">
+          Work minutes is required - 25 minutes is a good amount
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="name">Short Break Minutes</label>
+        <input 
+          type="number"
+          class="form-control"
+          name="shortbreakmin"
+          #shortbreakmin="ngModel"
+          [ngClass]="{ 'is-invalid':shortbreakmin.errors && shortbreakmin.touched }"
+          [(ngModel)]="shortBreakMin"
+          required
+        >
+        <div [hidden]="!shortbreakmin.errors?.['required']" class="invalid-feedback">
+          Short Break minutes is required - 5 minutes is a good amount
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="name">Long Break Minutes</label>
+        <input 
+          type="number"
+          class="form-control"
+          name="longbreakmin"
+          #longbreakmin="ngModel"
+          [ngClass]="{ 'is-invalid':longbreakmin.errors && longbreakmin.touched }"
+          [(ngModel)]="longBreakMin"
+          required
+        >
+        <div [hidden]="!longbreakmin.errors?.['required']" class="invalid-feedback">
+          Long Break minutes is required - 20 minutes is a good amount
+        </div>
+      </div>
+
+      <input type="submit" value="Let's Go" class="btn btn-block btn-submit">
+
+    </form>
+  </div>
+</div>
+
+<div *ngIf="ready" class="container">
+  <div class="bg">
+    <div class="overlay">
+      <div class="content">
+        <h1>{{ timerLabel }}</h1>
+        <h2>{{ timerText }}</h2>
+
+        <div class="row">
+          <button class="btn btn-submit" (click)="startTimer()">{{ leftBtnLabel }}</button>
+          <div *ngIf="checkMarks" class="btn checkMarks">{{ checkMarks }}</div>
+          <button class="btn btn-submit" (click)="resetTimer()">Reset</button>
+      </div>
+    </div>
+    
+    
+  </div>
+</div>

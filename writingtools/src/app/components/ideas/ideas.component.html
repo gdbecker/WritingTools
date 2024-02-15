@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row text-center justify-content-center">
+    <h1 class="mb-4">Generate New Ideas</h1>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card mb-3">
+          <div class="card-header form-header text-center">
+            Writing Prompts
+          </div>
+          <div class="card-body">
+            <form #promptForm="ngForm" (ngSubmit)="onPromptSubmit(promptForm)">
+              <div class="form-group mb-3">
+                <label class="" for="genre">Genre</label>
+                <select 
+                  class="custom-select form-control"
+                  name="genre"
+                  #promptGenre="ngModel"
+                  [ngClass]="{ 'is-invalid':promptGenre.errors && promptGenre.touched }"
+                  [(ngModel)]="prompt.genre.id"
+                >
+                  <option *ngFor="let g of genres" value="{{ g.id }}">{{ g.value }}</option>
+                </select>
+              </div>
+
+              <input type="submit" value="Get a New Prompt" class="btn btn-block btn-submit">
+
+            </form>
+
+            <div *ngIf="prompt" class="text-center mt-3">
+              <p>{{ prompt.value }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card mb-3">
+          <div class="card-header form-header text-center">
+            Character Names
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-6">
+                <div class="text-center mb-3 name-result">
+                  <p>{{ firstName.value }}</p>
+                </div>
+                <form #firstNameForm="ngForm" (ngSubmit)="onFirstNameSubmit(firstNameForm)">
+                  <input type="submit" value="First" class="btn btn-block btn-submit">
+                </form>
+              </div>
+              <div class="col-6">
+                <div class="text-center mb-3 name-result">
+                  <p>{{ lastName.value }}</p>
+                </div>
+                <form #lastNameForm="ngForm" (ngSubmit)="onLastNameSubmit(lastNameForm)">
+                  <input type="submit" value="Last" class="btn btn-block btn-submit">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

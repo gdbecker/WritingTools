@@ -1,0 +1,84 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+}
+
+.bg {
+  background-image: url('../../../assets/tomato.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 70vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.overlay {
+  background-color: rgba(255, 255, 255, 0.4);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.content {
+  text-align: center;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.content h2 {
+  margin-top: 5rem;
+  font-size: 60px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkMarks {
+  color: green;
+  background-color: var(--white);
+  pointer-events: none;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.form-header {
+  background-color: var(--orange);
+  color: var(--white);
+}
+
+.btn-submit {
+  background-color: var(--maroon);
+  color: var(--white);
+}
+
+.btn-submit:hover {
+  background-color: var(--orange);
+}
+
+.btn-submit:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .content {
+    width: 100%;
+  }
+  
+  .content h2 {
+    font-size: 50px;
+  }
+}

@@ -1,0 +1,44 @@
+/*
+COLOR PALETTE: https://colorhunt.co/palette/ecf8f9068da97e1717e55807
+Blue: #ECF8F9
+Teal: #068DA9
+Maroon: #7E1717
+Orange: #E55807
+White: #FFFFFF
+Black: #000000
+*/
+
+/* Fonts */
+@font-face {
+  font-family: 'RobotoMono-Regular';
+  src: url("/assets/Roboto_Mono/static/RobotoMono-Regular.ttf") format("truetype");
+}
+
+:root {
+  --blue: #ECF8F9;
+  --teal: #068DA9;
+  --maroon: #7E1717;
+  --orange: #E55807;
+  --white: #ffffff;
+  --black: #00000;
+}
+
+html { 
+  background-color: var(--blue);
+  height: 100vh;
+}
+
+body {
+  font-family: 'RobotoMono-Regular', sans-serif !important;
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 5rem;
+}
+
+.active {
+  background-color: var(--maroon) !important;
+}
+
+.dropdown-item:active {
+  background-color: var(--orange) !important;
+}

@@ -1,0 +1,20 @@
+nav {
+  background-color: var(--teal);
+}
+
+.nav-item {
+  padding: 0rem 0.5rem;
+}
+
+.dropdown-toggle {
+  background: transparent !important;
+}
+
+.dropdown-toggle:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+ul {
+  padding: 5px;
+}
