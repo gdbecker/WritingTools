@@ -5,6 +5,15 @@
 /tmp
 /out-tsc
 /bazel-out
+/firebase
+/writingtools-6b653
+**/writingtools-6b653
+
+# environment variables
+**/.env
+**/environment.ts
+**/environment.development.ts
+**/environments
 
 # Node
 /node_modules
