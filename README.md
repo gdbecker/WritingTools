@@ -1,6 +1,8 @@
 # Writing Tools Angular App
 
-Coming Soon
+After finishing Brad Traversy's [Angular Front to Back course on Udemy](https://www.udemy.com/course/angular-4-front-to-back/) and working on my ASL Zone app to learn sign language, I had this idea to create a central place to support writers at all stages to write their best stories. What tools could they (and selfishly myself because I'd love to be writing creatively more!) need to help them cure writer's block? Or in general make the best use of their time as they go after it? My initial thoughts were to at least include a pomodoro timer and a bank of ideas to randomly generate to get new ideas going. I've built a lot with React.js and Next.js so I thought this could be another great way to practice building with Angular and I'm happy with how this turned out!
+
+Writing Tools is a place all writers at any point in their journeys can go to get some new ideas or time themselves for work/breaks to effectively use the constraints they have and keep themselves motivated. The Ideas page includes generators for writing prompts across different genres at the click of a dropdown, as well as for first and last character names. All data is housed in a custom Firebase database. There is also a pomodoro timer on the next page writers can set up with their work and break time preferences, and check marks at the bottom of the screen keep track of how many work/break cycles they completed.
 
 ## Table of contents
 
@@ -45,12 +47,15 @@ Coming Soon
 - HTML5
 - CSS
 - Bootstrap
+- Firebase
 - Mobile-first workflow
 - [VS Code](https://code.visualstudio.com)
 
 ### What I learned
 
-Coming soon
+Since the idea behind this project is to support writers with various tools for any point in their journey, I knew I wanted to keep everything as clutter-free as possible, as well as plan for scalability. The Ideas page for now has generators for writing prompts and character names, but it's simple to grow and extend the page to include more, such as location names. I had a great time figuring out how to make the pomodoro timer to work like I wanted - I first made sure the timer functionality worked with set work/break times, and then I adjusted the page to include a form to set up custom values. The form will disappear upon successful submission to reveal the timer, ready to use. Creating the service modules for genre, prompt, and name data gave more practice for using Angular observables which was great.
+
+I thought about including Firebase authentication but ultimately decided against it because I wanted this site to be an easy place anyone can come to get help with their writing. And there wasn't data that directly tied to a specific user so I didn't see the need quite yet to add users. In the future I might add some more functionality which may include the need to add users.
 
 Here are a few code samples from this project:
 
@@ -114,16 +119,25 @@ startTimer() {
 }
 ```
 
-```css
-/* Styling for the home page */
-.content {
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 1.5rem;
-  text-align: center;
-  position: absolute;
-  right: 20%;
-  width: 30vw;
-}
+```html
+<!-- Pomodoro Timer structure -->
+<div *ngIf="ready" class="container">
+  <div class="bg">
+    <div class="overlay">
+      <div class="content">
+        <h1>{{ timerLabel }}</h1>
+        <h2>{{ timerText }}</h2>
+
+        <div class="row">
+          <button class="btn btn-submit" (click)="startTimer()">{{ leftBtnLabel }}</button>
+          <div *ngIf="checkMarks" class="btn checkMarks">{{ checkMarks }}</div>
+          <button class="btn btn-submit" (click)="resetTimer()">Reset</button>
+      </div>
+    </div>
+    
+    
+  </div>
+</div>
 ```
 
 ### Continued development
